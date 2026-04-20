@@ -1,0 +1,11 @@
+services:
+  kestra_trading:
+    build: .
+    container_name: kestra_trading
+    ports:
+      - "8081:8080"
+    volumes:
+      - .:/workspace
+      - ~/.dbt:/home/kestra/.dbt
+      - ./kestra/application.yml:/app/config/application.yml
+    command: server standalone --worker-thread=4

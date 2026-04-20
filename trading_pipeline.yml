@@ -1,0 +1,23 @@
+id: trading_pipeline
+namespace: trading
+
+tasks:
+  - id: run_python
+    type: io.kestra.plugin.scripts.shell.Commands
+    commands:
+      - cd /workspace
+      - python scripts/build_canonical_combined.py
+      - python scripts/build_analytics.py
+
+  - id: upload_to_gcs
+    type: io.kestra.plugin.gcp.gcs.Upload
+    from: /workspace/data/processed/
+    to: gs://trading-performance-analytics-bucket/
+
+  - id: run_dbt
+    type: io.kestra.plugin.scripts.shell.Commands
+    env:
+      DBT_PROFILES_DIR: /home/kestra/.dbt
+      GOOGLE_APPLICATION_CREDENTIALS: /workspace/credentials.json
+    commands:
+      - cd /workspace/trading_dbt && dbt deps && dbt run

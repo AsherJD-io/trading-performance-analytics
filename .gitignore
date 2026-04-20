@@ -1,0 +1,64 @@
+# ENV & PYTHON
+
+.env
+.env.*
+.envrc
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# DATA
+
+data/raw/
+data/processed/
+data/intermediate/
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.json
+
+# SECRETS
+
+credentials.json
+*.key
+*.pem
+*.p12
+profiles.yml
+
+# DBT
+
+target/
+dbt_packages/
+logs/
+
+# DOCKER / SYSTEM
+
+*.pid
+*.sock
+
+# EDITOR / OS
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# TEMP / DEBUG
+
+tmp/
+temp/
+*.tmp
+
+# TEST / BUILD
+
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# NOTEBOOKS
+
+.ipynb_checkpoints/
