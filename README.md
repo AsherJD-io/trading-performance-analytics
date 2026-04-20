@@ -260,10 +260,6 @@ cd /workspace/trading_dbt
 dbt debug
 dbt run
 ```
-## Notes
-The pipeline uses service account authentication, not OAuth
-Ensure credentials.json is mounted to /workspace
-BigQuery dataset must exist before running dbt
 
 ## Notes
 
